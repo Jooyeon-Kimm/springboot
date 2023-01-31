@@ -1,3 +1,4 @@
+*******************************************************************************
 1. 환경 세팅
 1-1. Oracle JDK 설치 (java version "19.0.1" 2022-10-18)
 1-2. MySQL 5.7 설치  (MySQL5.7.41)
@@ -10,7 +11,7 @@ Eclipse Marketplace - IntelliJ IDEA keymap for Eclipse 0.1
 1-6. UTF-8 세팅
 1-7. 폰트 세팅
 
-
+*******************************************************************************
 2. 의존성 설정
 2-1. Spring Boot DevTools
 2-2. Lombok
@@ -49,3 +50,43 @@ WEB MVC를 사용하여 웹 애플리케이션을 만드는데 필요한 스프�
   <artifactId>jstl</artifactId>
 </dependency>
 
+*******************************************************************************
+3. MySQL 한글 설정 및 연결
+3-1. MySQL 한글 설정
+my.ini 파일
+MySQL 재시작
+
+[client]
+default-character-set=utf8
+
+[mysql]
+default-character-set=utf8
+
+[mysqld]
+collation-server = utf8_unicode_ci
+init-connect='SET NAMES utf8'
+init_connect='SET collation_connection = utf8_general_ci'
+character-set-server=utf8
+
+3-2.한글 설정 확인
+show variables like 'c%';
+show variables like 'c%';
+
+3-3. 사용자 생성 및 권한 주기 및 DB 생성
+-- 유저이름@아이피주소
+create user 'cos'@'%' identified by 'cos1234';
+-- ON DB이름.테이블명
+-- TO 유저이름@아이피주소
+GRANT ALL PRIVILEGES ON *.* TO 'cos'@'%';
+CREATE DATABASE blog CHARACTER SET utf8 DEFAULT COLLATE utf8_general_ci;
+use blog;
+
+3-4. MySQL 프로젝트 연결
+src/main/resources/application.yml
+
+spring:
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/blog?serverTimezone=Asia/Seoul
+    username: joo
+    password: 
