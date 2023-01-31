@@ -106,3 +106,23 @@ git commit -m "환경세팅완료 v1"
 git remote add origin 주소
 git push origin master
 
+
+*******************************************************************************
+5. HTTP1.1 체험하기
+*******************************************************************************
+5-1. POSTMAN 설치
+5-2. HTTP1.1
+get
+post
+delete
+put
+
+5-3. stateless 와 stateful
+5-4. MIME 타입
+
+5-5. Controller 생성 및 실습
+HttpControllerTest.java 생성
+Get 메서드
+Post 메서드
+Put 메서드
+Delete 메서드
