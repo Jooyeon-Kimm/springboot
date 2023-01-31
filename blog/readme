@@ -74,10 +74,10 @@ show variables like 'c%';
 
 3-3. 사용자 생성 및 권한 주기 및 DB 생성
 -- 유저이름@아이피주소
-create user 'cos'@'%' identified by 'cos1234';
+create user 'joo'@'%' identified by 'joo1234';
 -- ON DB이름.테이블명
 -- TO 유저이름@아이피주소
-GRANT ALL PRIVILEGES ON *.* TO 'cos'@'%';
+GRANT ALL PRIVILEGES ON *.* TO 'joo'@'%';
 CREATE DATABASE blog CHARACTER SET utf8 DEFAULT COLLATE utf8_general_ci;
 use blog;
 
