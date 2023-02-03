@@ -156,7 +156,7 @@ http 통신 방식 2가지:
 패킷 스위칭 방식:
 데이터를 패킷으로 나누어서 순서대로 전달
 
-
+ 
 서킷 스위칭 방식: 
 A와 B가 데이터를 교환할 때
 데이터를 한 큐에 실어서 전달
@@ -176,6 +176,44 @@ Post 메서드
 Put 메서드
 Delete 메서드
 
+5-6. postman에서 http 요청 실습
+
+
 *******************************************************************************
-6. 
+6. lombok 세팅 및 사용하기
+*******************************************************************************
+메이븐이 관리하는 라이브러리들이 있는 곳 주소:
+C:\Users\사용자이름\.m2\repository
+
+lombok-1.18.24.jar 위치:
+C:\Users\joooo\.m2\repository\org\projectlombok\lombok\1.18.24
+
+lombok-1.18.24.jar을 실행해서
+Tool이 lombok을 인식할 수 있도록 빌드하기
+
+lombok 위치에서 우클릭 > Git Bash Here:
+java -jar lombok-1.18.24.jar
+
+C:\Util\sts-4.17.1.RELEASE 로 이동하기
+SpringToolSuite4.exe 선택하기 (SELECT)
+
+
+@Getter
+@Setter
+
+//Getter, Setter
+@Data
+
+//final 형 변수에 대한 생성자 만들어준다
+@RequiredArgsConstructor
+
+//생성자
+@AllArgsConstructor
+
+//빈 생성자 (final 형에서 사용 불가)
+@NoArgsConstructor
+
+@Builder
+*******************************************************************************
+
 *******************************************************************************
