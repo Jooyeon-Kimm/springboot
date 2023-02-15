@@ -364,5 +364,55 @@ Lazy-loading으로 인해 empty-beans이 생길 수 있다.
 너그럽게 빈 객체를 허락해주는 옵션이다.
 ​
 *******************************************************************************
-
+8. 테이블 생성하기
 *******************************************************************************
+
+1. Blog 테이블 만들기 (User, Board, Reply) 
+ 
+
+2. 연관관계 만들기
+@ManyToOne
+@OneToMany
+@OneToOne
+@ManyToMany
+ManyToMany는 사용하지 않는다. 
+그 이유는 서로의 primary key로만 중간 테이블을 생성해주는데, 
+날짜나 시간 다른 필드들이 필요할 수 있기 때문에, 
+내가 중간 테이블을 직접만들고 
+@OneToMany, @OneToMany를 사용한다.
+
+https://ict-nroo.tistory.com/127
+
+
+
+3. 더미 데이터 insert
+@DynamicInsert insert할때 null 인 필드 제외
+
+4. 더미 데이터 select 및 응답
+User user = userRepository.findById(id).orElseThrow(new Supplier<IllegalArgumentException>() {
+			@Override
+			public IllegalArgumentException get() {
+				return new IllegalArgumentException("해당 사용자가 없습니다.");
+			}
+		});
+@PageableDefault(size=2, sort="id", direction = Sort.Direction.DESC) Pageable pageable
+ 
+
+5. 더미 데이터 update
+https://ict-nroo.tistory.com/130
+
+6. 더미 데이터 delete
+ 
+7. 무한 참조 방지하기
+(1) Entity로 받고 Json직렬화 하기 전에 DTO 생성후 복사하기
+BeanUtils.copyProperties(A,B) 
+(2) 처음부터 DTO로 DB에서 받기
+(3) @JsonIgnore
+(4) @JsonIgnoreProperties({"board"})
+(5) @JsonBackReference @JsonManagedReference 
+
+ 
+
+참고 
+
+https://dublin-java.tistory.com/32 

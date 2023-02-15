@@ -29,13 +29,13 @@ public class TempControllerTest {
 		return "/que.png";
 	}
 
-	// http://localhost:8000/blog/temp/jsp
 	@GetMapping("/temp/jsp")
 	public String StringtempJsp() {
+		// application.yml 참고 (prefix/suffix)
 		// prefix : /WEB-INF/views/
 		// suffix : .jsp
 
-		return "/test.jsp";
-		// full 경로: /WEB-INF/views//test.jsp.jsp
+		return "test";
+		// full 경로: /WEB-INF/views/test.jsp
 	}
 }
