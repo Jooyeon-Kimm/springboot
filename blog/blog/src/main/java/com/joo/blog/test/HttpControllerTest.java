@@ -9,8 +9,25 @@ import org.springframework.web.bind.annotation.RestController;
 
 // Controller : 사용자가 요청 -> 응답 (HTML 파일)
 // RestController : 사용자가 요청 -> 응답 (Data)
+
+// http://localhost:8000/blog/http/lombok (application.yml 파일 참고)
 @RestController
 public class HttpControllerTest {
+
+	private static final String TAG = "HttpControllerTest : ";
+
+	@GetMapping("/http/lombok") // http://localhost:8080/http/lombok
+	public String lombokTest() {
+		// Member m = new Member(1, "ssar", "1234", "email");
+
+		// id 제외하고 입력받고 싶을 때
+		Member m = Member.builder().username("ssar").password("1234").email("ssar@nate.com").build();
+
+		System.out.println(TAG + "getter : " + m.getId());
+		m.setId(5000);
+		System.out.println(TAG + "setter : " + m.getId());
+		return "lombok test 완료";
+	}
 
 	// 인터넷 브라우저 요청은 무조건 get 요청밖에 할 수 없다.
 	// http://localhost:8080/http/get (select)
