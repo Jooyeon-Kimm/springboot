@@ -1,6 +1,7 @@
 package com.joo.blog.model;
 
 import java.sql.Timestamp;
+import java.util.List;
 
 import org.hibernate.annotations.ColumnDefault;
 import org.hibernate.annotations.CreationTimestamp;
@@ -13,7 +14,16 @@ import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.Lob;
 import jakarta.persistence.ManyToOne;
+import jakarta.persistence.OneToMany;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
+@Data
+@NoArgsConstructor
+@AllArgsConstructor
+@Builder
 @Entity
 public class Board {
 
@@ -34,6 +44,9 @@ public class Board {
 	@JoinColumn(name = "userId")
 	private User user; // DB는 오브젝트를 저장할 수 없다. FK, 자바는 오브젝트를 저장할 수 있다.
 
+	@OneToMany(mappedBy = "board") // mappedBy 연관관계의 주인이 아니다 (난 FK가 아니다) DB에 칼럼을 만들지 말아달라
+	private List<Reply> reply;
+
 	@CreationTimestamp
 	private Timestamp createDate;
 }
@@ -51,4 +64,12 @@ public class Board {
  * datetime(6), email varchar(50) not null, password varchar(100) not null, role
  * varchar(255) default 'user', username varchar(30) not null, primary key (id)
  * ) engine=InnoDB
+ */
+
+/*
+ * 
+ * Id content userID boardID 1 좋아요 2 1 2 같이해요 3 1
+ * 
+ * 
+ * Id title content userId createDate 1 안녕 반가워 2 2023.02.18
  */
