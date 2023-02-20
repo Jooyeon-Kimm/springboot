@@ -470,3 +470,6 @@ DB: Join문, user + board
 Controller에서 외부에서 request가 올 때
 실어나르는 Body데이터를 전부 JSON으로 받는다.
 즉, MIME 타입이 JSON이라는 말이다.
+
+
+
