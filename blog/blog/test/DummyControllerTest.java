@@ -1,6 +1,10 @@
 package com.joo.blog.test;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Sort;
+import org.springframework.data.web.PageableDefault;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -16,6 +20,28 @@ public class DummyControllerTest {
 
 	@Autowired // 의존성 주입 (DI)
 	private UserRepository userRepository;
+
+	// http://localhost:8000/blog/dummy/users
+	@GetMapping("/dummy/users")
+	public List<User> list() {
+		return userRepository.findAll();
+	}
+
+	// 한 페이지당 2건의 데이터를 리턴받아 보기
+	// http://localhost:8000/blog/dummy/user?page=0
+	@GetMapping("/dummy/user")
+	public List<User> pageList(
+			@PageableDefault(size = 2, sort = "id", direction = Sort.Direction.DESC) org.springframework.data.domain.Pageable pageable) {
+		List<User> users = userRepository.findAll(pageable).getContent();
+		return users;
+
+//	@GetMapping("/dummy/user")
+//	public Page<User> pageList(
+//			@PageableDefault(size = 2, sort = "id", direction = Sort.Direction.DESC) org.springframework.data.domain.Pageable pageable) {
+//		Page<User> users = userRepository.findAll(pageable);
+//		return users;
+
+	}
 
 	// {id} 주소로 파라미터를 전달받을 수 있음
 	// http:/localhost:8000/blog/dummy/user/100
