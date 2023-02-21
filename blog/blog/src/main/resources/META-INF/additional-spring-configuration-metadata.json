@@ -1,0 +1,32 @@
+{"properties": [
+  {
+    "name": "spring.jpa.hibernate.naming.use-new-id-generator-mappings",
+    "type": "java.lang.String",
+    "description": "A description for 'spring.jpa.hibernate.naming.use-new-id-generator-mappings'"
+  },
+  {
+    "name": "spring.mvc.view.driver-class-name",
+    "type": "java.lang.String",
+    "description": "A description for 'spring.mvc.view.driver-class-name'"
+  },
+  {
+    "name": "spring.mvc.view.datasource",
+    "type": "java.lang.String",
+    "description": "A description for 'spring.mvc.view.datasource'"
+  },
+  {
+    "name": "spring.mvc.view.url",
+    "type": "java.lang.String",
+    "description": "A description for 'spring.mvc.view.url'"
+  },
+  {
+    "name": "spring.mvc.view.username",
+    "type": "java.lang.String",
+    "description": "A description for 'spring.mvc.view.username'"
+  },
+  {
+    "name": "spring.mvc.view.password",
+    "type": "java.lang.String",
+    "description": "A description for 'spring.mvc.view.password'"
+  }
+]}
